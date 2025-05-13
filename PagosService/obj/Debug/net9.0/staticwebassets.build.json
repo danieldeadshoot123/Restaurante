@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "gHNuJvLGGiX9ooCveOUuBnVCxsVWFvFUOqaPddG4ork=",
+  "Source": "PagosService",
+  "BasePath": "_content/PagosService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
