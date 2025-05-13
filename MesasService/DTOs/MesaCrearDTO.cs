@@ -2,6 +2,8 @@ namespace MesasService.DTOs
 {
     public class MesaCrearDTO
     {
-        public string NumeroMEsa {get;set;} =string.Empty;
+        public string NumeroMesa {get;set;} =string.Empty;
+    
+
     }
 }

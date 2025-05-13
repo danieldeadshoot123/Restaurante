@@ -47,9 +47,9 @@ namespace MesasService.Repository
             _context.mesas.Update(mesa);
         }
 
-        public Task SaveChangesASync()
+        public async Task SaveChangesAsync() 
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync(); 
         }
     }
 }

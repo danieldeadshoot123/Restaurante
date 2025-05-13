@@ -20,7 +20,7 @@ namespace MesasService.Services
                 throw new Exception("Mesa no encontrada");
 
             _mesaRepository.Remove(mesa);
-            await _mesaRepository.SaveChangesASync();
+            await _mesaRepository.SaveChangesAsync();
 
             return true;
         }

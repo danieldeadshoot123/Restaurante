@@ -132,3 +132,4 @@ C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\zh-Hant\Micro
 C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\danie\Desktop\Restaurante\PedidosService\obj\Debug\net9.0\PedidosService.sourcelink.json

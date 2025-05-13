@@ -35,9 +35,9 @@ namespace PedidosService.Repository
             await _context.Pedidos.AddAsync(pedido);
         }
 
-        public Task SaveChangesAsync()
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
         }
 
         public void Remove(Pedido pedido)

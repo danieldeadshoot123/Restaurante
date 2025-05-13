@@ -35,7 +35,7 @@ namespace MesasService.Services
 
            
             _mesaRepository.Update(mesa);
-            await _mesaRepository.SaveChangesASync();
+            await _mesaRepository.SaveChangesAsync();
 
             return true; 
         }

@@ -8,7 +8,7 @@ namespace MesasService.Repository
         Task <List<Mesa>>GetAllAsync();
 
         Task AddAsync(Mesa mesa );
-        Task SaveChangesASync();
+        Task SaveChangesAsync();
         void Remove(Mesa mesa);
         void Update(Mesa mesa);
 
