@@ -1,5 +1,5 @@
 
-namespace MenuService.Model{
+namespace MenuService.Models{
 
 
     public class Menu{
