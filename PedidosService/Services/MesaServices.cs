@@ -17,7 +17,7 @@ namespace PedidosService.Services
 
         public async Task<MesaDTO?> GetMesaByIdAsync(int id)
         {
-            var response = await _httpClient.GetAsync($"http://mesaservice/api/mesas/{id}");
+            var response = await _httpClient.GetAsync($"http://localhost:5290/api/mesas/{id}");
             if(!response.IsSuccessStatusCode) return null;
 
 

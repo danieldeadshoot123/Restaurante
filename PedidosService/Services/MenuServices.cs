@@ -15,7 +15,7 @@ namespace PedidosService.Services
 
         public async Task<MenuDTO?> GetMenuByIdAsync(int id)
         {
-            var response = await _httpClient.GetAsync($"http://menuservice/api/menu/{id}");
+            var response = await _httpClient.GetAsync($"http://localhost:5250/api/menu/{id}");
             if (!response.IsSuccessStatusCode)
                 return null;
 

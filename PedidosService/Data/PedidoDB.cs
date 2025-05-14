@@ -18,20 +18,9 @@ namespace PedidoDB.Data
             modelBuilder.Entity<PedidoMenu>()
                 .HasKey(pm => new { pm.PedidoId, pm.MenuId });
 
-            modelBuilder.Entity<PedidoMenu>()
+             modelBuilder.Entity<PedidoMenu>()
                 .HasOne(pm => pm.Pedido)
                 .WithMany(p => p.PedidoMenus)
                 .HasForeignKey(pm => pm.PedidoId);
-
-            modelBuilder.Entity<PedidoMenu>()
-                .HasOne(pm => pm.Menu)
-                .WithMany()
-                .HasForeignKey(pm => pm.MenuId);
-
-            modelBuilder.Entity<Pedido>()
-                .HasOne(p => p.Mesa)
-                .WithMany() 
-                .HasForeignKey(p => p.MesaId);
-        }
     }
-}
+}}

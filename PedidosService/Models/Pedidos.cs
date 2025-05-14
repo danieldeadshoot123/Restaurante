@@ -9,14 +9,14 @@ namespace PedidosService.Models {
         public DateTime DiaPedido { get; set; } = DateTime.UtcNow;
 
         public int MesaId { get; set; } 
-        public MesaDTO? Mesa { get; set; } 
+ 
         public List<PedidoMenu> PedidoMenus { get; set; } = new(); 
 
     public class PedidoMenu {
         public int PedidoId { get; set; } 
-        public Pedido? Pedido { get; set; } 
+        public Pedido? Pedido{get;set;}       
 
         public int MenuId { get; set; } 
-        public MenuDTO? Menu { get; set; } 
+      
     }
 }}

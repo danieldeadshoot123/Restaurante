@@ -12,8 +12,8 @@ using PedidoDB.Data;
 namespace PedidosService.Migrations
 {
     [DbContext(typeof(PedidoDb))]
-    [Migration("20250512213758_TerceraMigrate")]
-    partial class TerceraMigrate
+    [Migration("20250514145054_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,47 +24,6 @@ namespace PedidosService.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("PedidosService.DTOs.MenuDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("NombreComida")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("numeric");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MenuDTO");
-                });
-
-            modelBuilder.Entity("PedidosService.DTOs.MesaDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Disponible")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("NumeroMesa")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MesaDTO");
-                });
 
             modelBuilder.Entity("PedidosService.Models.Pedido", b =>
                 {
@@ -90,8 +49,6 @@ namespace PedidosService.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MesaId");
-
                     b.ToTable("Pedidos");
                 });
 
@@ -105,37 +62,16 @@ namespace PedidosService.Migrations
 
                     b.HasKey("PedidoId", "MenuId");
 
-                    b.HasIndex("MenuId");
-
                     b.ToTable("PedidoMenus");
-                });
-
-            modelBuilder.Entity("PedidosService.Models.Pedido", b =>
-                {
-                    b.HasOne("PedidosService.DTOs.MesaDTO", "Mesa")
-                        .WithMany()
-                        .HasForeignKey("MesaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Mesa");
                 });
 
             modelBuilder.Entity("PedidosService.Models.Pedido+PedidoMenu", b =>
                 {
-                    b.HasOne("PedidosService.DTOs.MenuDTO", "Menu")
-                        .WithMany()
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("PedidosService.Models.Pedido", "Pedido")
                         .WithMany("PedidoMenus")
                         .HasForeignKey("PedidoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Menu");
 
                     b.Navigation("Pedido");
                 });
