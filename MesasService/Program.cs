@@ -3,6 +3,12 @@ using MesasService.Data;
 using MesasService.Repository;
 using MesasService.Services;
 using Microsoft.OpenApi.Models;
+using MassTransit;
+using MesasService.DTOs;
+using MesasService.Consumer;
+{
+    
+}
 
 
 
@@ -23,11 +29,28 @@ var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConn
 builder.Services.AddDbContext<MesaDb>(options =>
     options.UseNpgsql(connectionString));
 
-
+builder.Services.AddMassTransit(X =>
+{
+    X.AddConsumer<MesaUpdateConsumer>();
+    X.UsingRabbitMq((context,cfg)=>
+    {
+        cfg.Host("localhost", "/", h =>
+        {
+            h.Username("admin");
+            h.Password("admin123");
+        });
+    
+        cfg.ReceiveEndpoint("mesa_mesagge_update_queue", e =>
+        {
+            e.ConfigureConsumer<MesaUpdateConsumer>(context);
+        });
+    });
+});
 
 
 
 builder.Services.AddScoped<IMesaRepository, MesaRepository>();
+
 
 
 builder.Services.AddScoped<CrearMesaService>();

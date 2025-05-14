@@ -3,6 +3,7 @@ using PedidosService.DTOs;
 using PedidosService.Models;
 using PedidosService.Repository;
 using static PedidosService.Models.Pedido;
+using MassTransit;
 
 
     
@@ -16,13 +17,15 @@ namespace PedidosService.Services
         private readonly MesasService _mesasService;
 
         private readonly MenuService _menuService;
+        private readonly IBus _bus;
 
 
-        public  CreatePedidoService(IPedidoRepository pedidoRepository, MesasService mesasService, MenuService menuService)
+        public  CreatePedidoService(IPedidoRepository pedidoRepository, MesasService mesasService, MenuService menuService, IBus bus)
         {
             _pedidoRepository = pedidoRepository;
             _mesasService = mesasService;
             _menuService = menuService;
+            _bus = bus;
 
         }
 
@@ -58,6 +61,16 @@ namespace PedidosService.Services
 
             await _pedidoRepository.AddAsync(pedido);
             await _pedidoRepository.SaveChangesAsync();
+
+
+
+            var mensaje = new MesaMesaggeUpdate
+            {
+                MesaId = pedido.MesaId,
+                NuevoEstado = "Ocupado"
+            };
+            await _bus.Publish(mensaje);
+
 
             return new PedidoReadDTO 
             {

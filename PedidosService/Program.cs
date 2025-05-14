@@ -3,7 +3,7 @@ using PedidoDB.Data;
 using PedidosService.Repository;
 using PedidosService.Services;
 using Microsoft.OpenApi.Models;
-
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +15,17 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "PedidosService", Version = "v1" });
 });
-
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", "/", h =>
+        {
+            h.Username("admin");
+            h.Password("admin123");
+        });
+    });
+});
 
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");

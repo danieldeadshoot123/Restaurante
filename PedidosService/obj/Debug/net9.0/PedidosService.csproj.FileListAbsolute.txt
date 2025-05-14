@@ -133,3 +133,7 @@ C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\Swashbuckle.A
 C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\danie\Desktop\Restaurante\PedidosService\obj\Debug\net9.0\PedidosService.sourcelink.json
+C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\MassTransit.dll
+C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\MassTransit.Abstractions.dll
+C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\MassTransit.RabbitMqTransport.dll
+C:\Users\danie\Desktop\Restaurante\PedidosService\bin\Debug\net9.0\RabbitMQ.Client.dll
