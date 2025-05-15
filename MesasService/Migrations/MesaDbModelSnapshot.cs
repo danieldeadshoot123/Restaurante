@@ -29,9 +29,8 @@ namespace MesasService.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Disponible")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<bool>("Disponible")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("NumeroMesa")
                         .IsRequired()

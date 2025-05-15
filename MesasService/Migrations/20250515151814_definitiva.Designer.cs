@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MesasService.Migrations
 {
     [DbContext(typeof(MesaDb))]
-    [Migration("20250513154715_FirstMIgrate")]
-    partial class FirstMIgrate
+    [Migration("20250515151814_definitiva")]
+    partial class definitiva
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,9 +32,8 @@ namespace MesasService.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Disponible")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<bool>("Disponible")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("NumeroMesa")
                         .IsRequired()

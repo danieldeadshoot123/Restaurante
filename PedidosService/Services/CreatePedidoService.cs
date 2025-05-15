@@ -17,15 +17,15 @@ namespace PedidosService.Services
         private readonly MesasService _mesasService;
 
         private readonly MenuService _menuService;
-        private readonly IBus _bus;
+ 
 
 
-        public  CreatePedidoService(IPedidoRepository pedidoRepository, MesasService mesasService, MenuService menuService, IBus bus)
+        public  CreatePedidoService(IPedidoRepository pedidoRepository, MesasService mesasService, MenuService menuService )
         {
             _pedidoRepository = pedidoRepository;
             _mesasService = mesasService;
             _menuService = menuService;
-            _bus = bus;
+           
 
         }
 
@@ -62,14 +62,13 @@ namespace PedidosService.Services
             await _pedidoRepository.AddAsync(pedido);
             await _pedidoRepository.SaveChangesAsync();
 
-
-
-            var mensaje = new MesaMesaggeUpdate
+            var actualizado = await _mesasService.ActualizarDisponibilidadMesa(pedido.MesaId,false);
+            if (!actualizado)
             {
-                MesaId = pedido.MesaId,
-                NuevoEstado = "Ocupado"
-            };
-            await _bus.Publish(mensaje);
+                throw new Exception("No se Pudo actualizar la disponibilidad  de la mesa ");
+            }
+
+        
 
 
             return new PedidoReadDTO 

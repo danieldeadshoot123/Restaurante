@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CocinaService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99b5cde3903279713b9d98599efae931d2fb2013")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b6f0e4df4de7e841f44ff6a5eb75f6907a909e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("CocinaService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CocinaService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

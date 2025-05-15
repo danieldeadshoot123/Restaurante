@@ -2,6 +2,7 @@ using System.Security.Cryptography.X509Certificates;
 using Avro;
 using Energistics.Datatypes;
 using MesasService.DTOs;
+using MesasService.Repository;
 using MesasService.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,14 +18,16 @@ namespace MesasService.Controllers
         private readonly MostrarMesaServices _mostrarMesaServices;
         private readonly ActualizarMesaService _actualizarMesaService;
         private readonly EliminarMesaServices _eliminarMesaServices;
+        private readonly IMesaRepository _mesaRepository;
 
 
-        public MesaController(CrearMesaService crearMesaService, MostrarMesaServices mostrarMesaServices, ActualizarMesaService actualizarMesaService, EliminarMesaServices eliminarMesaServices)
+        public MesaController(CrearMesaService crearMesaService, MostrarMesaServices mostrarMesaServices, ActualizarMesaService actualizarMesaService, EliminarMesaServices eliminarMesaServices, IMesaRepository mesaRepository)
         {
             _crearMesaService = crearMesaService;
             _actualizarMesaService = actualizarMesaService;
             _mostrarMesaServices = mostrarMesaServices;
             _eliminarMesaServices = eliminarMesaServices;
+            _mesaRepository =  mesaRepository;
         } 
 
         [HttpPost]
@@ -56,7 +59,19 @@ namespace MesasService.Controllers
             var mesa = await _mostrarMesaServices.GetAllMesaAsync();
             return Ok(mesa);
         }
+        [HttpPut("{id}/disponibilidad")]
 
+        public async Task<IActionResult>ActualizarDisponibilidad(int id, [FromBody]MesaDisponibilidadDTO dto )
+        {
+            var mesa = await _mesaRepository.GetByIdAsync(id);
+            if(mesa == null ) return NotFound();
+
+            mesa.Disponible = dto.Disponible;
+            await _mesaRepository.SaveChangesAsync();
+
+
+            return NoContent();
+        }
 
         [HttpPatch("{id}")]
         

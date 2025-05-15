@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MesasService.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMIgrate : Migration
+    public partial class definitiva : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace MesasService.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NumeroMesa = table.Column<string>(type: "text", nullable: false),
-                    Disponible = table.Column<string>(type: "text", nullable: false)
+                    Disponible = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {

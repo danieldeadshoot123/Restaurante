@@ -31,7 +31,7 @@ namespace MesasService.Services
             }
 
             
-            mesa.Disponible = nuevoEstado;
+            mesa.Disponible = false;
 
            
             _mesaRepository.Update(mesa);

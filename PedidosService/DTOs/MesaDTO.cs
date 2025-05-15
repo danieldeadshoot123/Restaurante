@@ -6,6 +6,6 @@ namespace PedidosService.DTOs
 
         public string NumeroMesa {get;set;}= string.Empty;
 
-        public string Disponible {get;set;} = "libre";
+        public bool Disponible { get; set; }
     }
 }

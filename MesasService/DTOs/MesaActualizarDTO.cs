@@ -2,6 +2,6 @@ namespace MesasService.DTOs
 {
     public class MesaActualizarDTO
     {
-        public string Disponible {get;set;} = string.Empty;
+        public bool Disponible {get;set;}
     }
 }

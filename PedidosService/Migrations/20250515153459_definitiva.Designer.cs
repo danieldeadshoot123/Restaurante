@@ -12,8 +12,8 @@ using PedidoDB.Data;
 namespace PedidosService.Migrations
 {
     [DbContext(typeof(PedidoDb))]
-    [Migration("20250514145054_Inicial")]
-    partial class Inicial
+    [Migration("20250515153459_definitiva")]
+    partial class definitiva
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

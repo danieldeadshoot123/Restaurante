@@ -20,7 +20,7 @@ namespace MesasService.Services
         var mesa = new Mesa 
         {
             NumeroMesa = mesaCrearDTO.NumeroMesa,
-            Disponible = "libre"
+            Disponible = true
         };
         await _mesaRepository.AddAsync(mesa);
         await _mesaRepository.SaveChangesAsync();

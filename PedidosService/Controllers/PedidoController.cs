@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PedidoDB.Data;
 using PedidosService.DTOs;
 using PedidosService.Models;
+using PedidosService.Repository;
 using PedidosService.Services;
 
 namespace PedidosService.Controllers
@@ -17,13 +18,18 @@ namespace PedidosService.Controllers
         private readonly EliminarPedidoService _eliminarPedidoService;
         private readonly MostrarPedidoService _mostrarPedidoService ;
 
+        private readonly IPedidoRepository _pedidoRepository;
+        private readonly MesasService   _mesasService;
 
-        public PedidoController (CreatePedidoService createPedidoService, MostrarPedidoService mostrarPedidoService, ActualizarPedidoService actualizarPedidoService, EliminarPedidoService eliminarPedidoService )
+
+        public PedidoController(CreatePedidoService createPedidoService, MostrarPedidoService mostrarPedidoService, ActualizarPedidoService actualizarPedidoService, EliminarPedidoService eliminarPedidoService, IPedidoRepository pedidoRepository, MesasService MesasService)
         {
             _createPedidoService = createPedidoService;
             _actualizarPedidoService = actualizarPedidoService;
             _mostrarPedidoService = mostrarPedidoService;
             _eliminarPedidoService = eliminarPedidoService;
+            _pedidoRepository = pedidoRepository;
+            _mesasService = MesasService;
         }
 
        
@@ -91,6 +97,29 @@ namespace PedidosService.Controllers
             {
                 return NotFound ( new { message = ex.Message});
             }
+        }
+
+
+        [HttpPut("{id}/estado")]
+        public async Task<IActionResult> CambiarEstado(int id, [FromBody] string nuevoEstado)
+        {
+            var pedido = await _pedidoRepository.GetByIdAsync(id);
+            if (pedido == null) return NotFound("Pedido no encontrado");
+
+            pedido.Estatus = nuevoEstado;
+            await _pedidoRepository.SaveChangesAsync();
+
+            // Si el estado es "entregado", liberar la mesa
+            if (nuevoEstado.ToLower() == "entregado")
+            {
+                var liberarResult = await _mesasService.LiberarMesaAsync(pedido.MesaId);
+                if (!liberarResult)
+                {
+                    return StatusCode(500, "Error al liberar la mesa");
+                }
+            }
+
+            return NoContent();
         }
 
         
