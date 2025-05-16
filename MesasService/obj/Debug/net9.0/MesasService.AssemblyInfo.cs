@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MesasService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b6f0e4df4de7e841f44ff6a5eb75f6907a909e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dad98e9ba6e85330b2748314c80c5017db0c8323")]
 [assembly: System.Reflection.AssemblyProductAttribute("MesasService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MesasService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
